@@ -72,7 +72,7 @@
 #### **gradle引用**
 
 ```
-compile 'liji.library.dev:citypickerview:4.2.1'
+compile 'liji.library.dev:citypickerview:4.3.2'
 ```
 
 #### **代码混淆**
@@ -95,15 +95,8 @@ compile 'liji.library.dev:citypickerview:4.2.1'
 
 ### **更新说明**
 
-#### **V4.2.1版本更新内容（2019.04.15）**
-1. 发布4.2.1版本,更新数据源，新增 “省直辖县级行政单位” 城市数据
-2. 修复城市id为空的bug
-
-
-
-#### **V4.1.2版本更新内容（2019.03.14）**
-1. 发布4.1.2版本,修复香港行政区域中ID出现重复的bug[#140](https://github.com/crazyandcoder/citypicker/issues/140)
-
+#### **V4.3.2版本更新内容（2019.07.05）**
+1. 发布4.3.2版本,修复中山市，东莞市，三沙市，嘉峪关市等地区城市数据补全的问题。
 
 [历史更新说明](https://github.com/crazyandcoder/citypicker/wiki/%E5%8E%86%E5%8F%B2%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
