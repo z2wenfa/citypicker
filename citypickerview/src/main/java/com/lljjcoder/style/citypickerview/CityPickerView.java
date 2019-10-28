@@ -64,7 +64,7 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
 
     private Context context;
 
-    private ProvinceBean[] proArra;
+    private List<ProvinceBean> proArra;
 
     public void setOnCityItemClickListener(OnCityItemClickListener listener) {
         mBaseListener = listener;
@@ -275,11 +275,11 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
      * @param array
      * @return
      */
-    private ProvinceBean[] getProArrData(ProvinceBean[] array) {
+    private List<ProvinceBean> getProArrData(List<ProvinceBean> array) {
 
         List<ProvinceBean> provinceBeanList = new ArrayList<>();
-        for (int i = 0; i < array.length; i++) {
-            provinceBeanList.add(array[i]);
+        for (int i = 0; i < array.size(); i++) {
+            provinceBeanList.add(array.get(i));
         }
 
         //不需要港澳台数据
@@ -289,9 +289,9 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
             provinceBeanList.remove(provinceBeanList.size() - 1);
         }
 
-        proArra = new ProvinceBean[provinceBeanList.size()];
+        proArra = new ArrayList<ProvinceBean>();
         for (int i = 0; i < provinceBeanList.size(); i++) {
-            proArra[i] = provinceBeanList.get(i);
+            proArra.add(provinceBeanList.get(i));
         }
 
         return proArra;
@@ -310,9 +310,9 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
         getProArrData(parseHelper.getProvinceBeenArray());
 
         int provinceDefault = -1;
-        if (!TextUtils.isEmpty(config.getDefaultProvinceName()) && proArra.length > 0) {
-            for (int i = 0; i < proArra.length; i++) {
-                if (proArra[i].getName().contains(config.getDefaultProvinceName())) {
+        if (!TextUtils.isEmpty(config.getDefaultProvinceName()) && proArra.size() > 0) {
+            for (int i = 0; i < proArra.size(); i++) {
+                if (proArra.get(i).getName().contains(config.getDefaultProvinceName())) {
                     provinceDefault = i;
                     break;
                 }
@@ -375,23 +375,23 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
         int pCurrent = mViewProvince.getCurrentItem();
 
         //省份选中的名称
-        ProvinceBean mProvinceBean = proArra[pCurrent];
+        ProvinceBean mProvinceBean = proArra.get(pCurrent);
         parseHelper.setProvinceBean(mProvinceBean);
 
         if (parseHelper.getPro_CityMap() == null) {
             return;
         }
 
-        CityBean[] cities = parseHelper.getPro_CityMap().get(mProvinceBean.getName());
+        List<CityBean> cities = parseHelper.getPro_CityMap().get(mProvinceBean.getName());
         if (cities == null) {
             return;
         }
 
         //设置最初的默认城市
         int cityDefault = -1;
-        if (!TextUtils.isEmpty(config.getDefaultCityName()) && cities.length > 0) {
-            for (int i = 0; i < cities.length; i++) {
-                if (config.getDefaultCityName().contains(cities[i].getName())) {
+        if (!TextUtils.isEmpty(config.getDefaultCityName()) && cities.size() > 0) {
+            for (int i = 0; i < cities.size(); i++) {
+                if (config.getDefaultCityName().contains(cities.get(i).getName())) {
                     cityDefault = i;
                     break;
                 }
@@ -431,12 +431,12 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
         if (config.getWheelType() == CityConfig.WheelType.PRO_CITY
                 || config.getWheelType() == CityConfig.WheelType.PRO_CITY_DIS) {
 
-            CityBean mCityBean = parseHelper.getPro_CityMap().get(parseHelper.getProvinceBean().getName())[pCurrent];
+            CityBean mCityBean = parseHelper.getPro_CityMap().get(parseHelper.getProvinceBean().getName()).get(pCurrent);
             parseHelper.setCityBean(mCityBean);
 
             if (config.getWheelType() == CityConfig.WheelType.PRO_CITY_DIS) {
 
-                DistrictBean[] areas = parseHelper.getCity_DisMap()
+                List<DistrictBean> areas = parseHelper.getCity_DisMap()
                         .get(parseHelper.getProvinceBean().getName() + mCityBean.getName());
 
                 if (areas == null) {
@@ -444,9 +444,9 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
                 }
 
                 int districtDefault = -1;
-                if (!TextUtils.isEmpty(config.getDefaultDistrict()) && areas.length > 0) {
-                    for (int i = 0; i < areas.length; i++) {
-                        if (config.getDefaultDistrict().contains(areas[i].getName())) {
+                if (!TextUtils.isEmpty(config.getDefaultDistrict()) && areas.size() > 0) {
+                    for (int i = 0; i < areas.size(); i++) {
+                        if (config.getDefaultDistrict().contains(areas.get(i).getName())) {
                             districtDefault = i;
                             break;
                         }
@@ -479,8 +479,8 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
                             + mCityBean.getName() + config.getDefaultDistrict());
                 } else {
                     mViewDistrict.setCurrentItem(0);
-                    if (areas.length > 0) {
-                        mDistrictBean = areas[0];
+                    if (areas.size() > 0) {
+                        mDistrictBean = areas.get(0);
                     }
                 }
 
@@ -519,7 +519,7 @@ public class CityPickerView implements CanShow, OnWheelChangedListener {
             if (parseHelper != null && parseHelper.getCity_DisMap() != null) {
 
                 DistrictBean mDistrictBean = parseHelper.getCity_DisMap()
-                        .get(parseHelper.getProvinceBean().getName() + parseHelper.getCityBean().getName())[newValue];
+                        .get(parseHelper.getProvinceBean().getName() + parseHelper.getCityBean().getName()).get(newValue);
 
                 parseHelper.setDistrictBean(mDistrictBean);
             }
