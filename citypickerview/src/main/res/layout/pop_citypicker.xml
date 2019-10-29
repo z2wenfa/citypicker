@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:background="@color/province_line_border">
 
         <TextView
@@ -22,7 +22,7 @@
             android:gravity="center_vertical"
             android:text="确定"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -32,7 +32,7 @@
             android:gravity="center_vertical"
             android:text="选择地区"
             android:textColor="#000000"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_cancel"
@@ -43,13 +43,14 @@
             android:gravity="center_vertical"
             android:text="取消"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll_title"
         android:layout_width="fill_parent"
+        android:background="@color/white"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
