@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.ihidea.as.citypicker.activity.CityPickerCustomeDataActivity;
 import com.ihidea.as.citypicker.activity.CitypickerJDActivity;
 import com.ihidea.as.citypicker.activity.CitypickerListActivity;
 import com.ihidea.as.citypicker.activity.CitypickerThreeListActivity;
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     CityPickerAdapter mCityPickerAdapter;
 
-    String[] mTitle = new String[]{"城市列表", "ios选择器", "三级列表", "仿京东"};
+    String[] mTitle = new String[]{"城市列表", "ios选择器", "三级列表", "仿京东","自定义数据源"};
 
     Integer[] mIcon = new Integer[]{R.drawable.ic_citypicker_onecity, R.drawable.ic_citypicker_ios,
-            R.drawable.ic_citypicker_three_city, R.drawable.ic_citypicker_jingdong};
+            R.drawable.ic_citypicker_three_city, R.drawable.ic_citypicker_jingdong, R.drawable.ic_citypicker_custome};
 
     private List<CityPickerStyleBean> mCityPickerStyleBeanList = new ArrayList<>();
 
@@ -96,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
             case R.drawable.ic_citypicker_jingdong:
                 ActivityUtils.getInstance().showActivity(MainActivity.this, CitypickerJDActivity.class);
                 break;
+
+            case R.drawable.ic_citypicker_custome:
+                ActivityUtils.getInstance().showActivity(MainActivity.this, CityPickerCustomeDataActivity.class);
+                break;
+
+
             default:
                 break;
         }

@@ -50,7 +50,7 @@ public class WheelView extends View {
     /**
      * 滚轮从上到下背景逐渐变淡，到中间，逆反改变
      */
-    private int[] SHADOWS_COLORS = new int[] { 0xefE9E9E9, 0xcfE9E9E9, 0x3fE9E9E9 };
+    private int[] SHADOWS_COLORS = new int[] { 0xefF9F9F9, 0xcfF9F9F9, 0x3fF9F9F9 };
     
     /**
      * Top and bottom items offset (to hide that)

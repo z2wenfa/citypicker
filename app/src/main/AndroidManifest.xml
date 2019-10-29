@@ -9,6 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.CityPickerCustomeDataActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -19,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CitypickerListActivity"></activity>
-        <activity android:name=".activity.CitypickerWheelActivity"></activity>
-        <activity android:name=".test.TestActivity"></activity>
-        <activity android:name=".activity.CitypickerThreeListActivity"></activity>
-        <activity android:name=".activity.CitypickerJDActivity"></activity>
+        <activity android:name=".activity.CitypickerListActivity" />
+        <activity android:name=".activity.CitypickerWheelActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".activity.CitypickerThreeListActivity" />
+        <activity android:name=".activity.CitypickerJDActivity" />
     </application>
 
 </manifest>
