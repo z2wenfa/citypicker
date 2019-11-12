@@ -64,7 +64,7 @@
 #### **一. 仿iOS样式使用方法**
 
  1. [样式一链接-（仿iOS滚轮实现)](https://github.com/crazyandcoder/citypicker/wiki/%E6%A0%B7%E5%BC%8F%E4%B8%80%EF%BC%88%E4%BB%BFiOS%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%EF%BC%89)
- 2. [样式一链接-（自定义数据源)](https://github.com/crazyandcoder/citypicker/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%BA%90%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0)
+ 2. [样式一链接-（自定义数据源)](https://github.com/crazyandcoder/citypicker/wiki/%E6%A0%B7%E5%BC%8F%E4%B8%80%EF%BC%88%E4%BB%BFiOS%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%EF%BC%89%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%BA%90)
 
 #### **二. 仿京东样式使用方法**
 [样式二链接-（仿京东样式)](https://github.com/crazyandcoder/citypicker/wiki/%E6%A0%B7%E5%BC%8F%E5%9B%9B%EF%BC%88%E4%BB%BF%E4%BA%AC%E4%B8%9C%E6%A0%B7%E5%BC%8F%EF%BC%89)
