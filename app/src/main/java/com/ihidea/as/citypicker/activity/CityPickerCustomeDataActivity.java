@@ -1,14 +1,20 @@
 package com.ihidea.as.citypicker.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ihidea.as.citypicker.R;
 import com.lljjcoder.Interface.OnCustomCityPickerItemClickListener;
 import com.lljjcoder.bean.CustomCityData;
+import com.lljjcoder.citywheel.CityConfig;
 import com.lljjcoder.citywheel.CustomConfig;
 import com.lljjcoder.style.citycustome.CustomCityPicker;
 
@@ -17,13 +23,46 @@ import java.util.List;
 
 public class CityPickerCustomeDataActivity extends AppCompatActivity {
 
-    private Button customeBtn;
+    private TextView customeBtn;
     private TextView resultTv;
+
+
+    EditText mProVisibleCountEt;
+
+    CheckBox mProCyclicCk;
+
+    CheckBox mCityCyclicCk;
+
+    CheckBox mAreaCyclicCk;
+
+    CheckBox mHalfBgCk;
+    TextView mResetSettingTv;
+
+    TextView mOneTv;
+
+    TextView mTwoTv;
+
+    TextView mThreeTv;
+
+    LinearLayout pro_cyclic_ll;
+    LinearLayout city_cyclic_ll;
+    LinearLayout area_cyclic_ll;
+
+    private int visibleItems = 5;
+
+    private boolean isProvinceCyclic = true;
+
+    private boolean isCityCyclic = true;
+
+    private boolean isDistrictCyclic = true;
+
+    private boolean isShowBg = true;
     private CustomCityPicker customCityPicker = null;
     /**
      * 自定义数据源-省份数据
      */
     private List<CustomCityData> mProvinceListData = new ArrayList<>();
+    public CustomConfig.WheelType mWheelType = CustomConfig.WheelType.PRO_CITY_DIS;
 
 
     @Override
@@ -33,8 +72,25 @@ public class CityPickerCustomeDataActivity extends AppCompatActivity {
         initCustomeCityData();
 
         customCityPicker = new CustomCityPicker(this);
-        customeBtn = (Button) findViewById(R.id.customBtn);
+        pro_cyclic_ll = (LinearLayout) findViewById(R.id.pro_cyclic_ll);
+        city_cyclic_ll = (LinearLayout) findViewById(R.id.city_cyclic_ll);
+        area_cyclic_ll = (LinearLayout) findViewById(R.id.area_cyclic_ll);
+        customeBtn = (TextView) findViewById(R.id.customBtn);
         resultTv = (TextView) findViewById(R.id.resultTv);
+
+        mProVisibleCountEt = (EditText) findViewById(R.id.pro_visible_count_et);
+        mProCyclicCk = (CheckBox) findViewById(R.id.pro_cyclic_ck);
+        mCityCyclicCk = (CheckBox) findViewById(R.id.city_cyclic_ck);
+        mAreaCyclicCk = (CheckBox) findViewById(R.id.area_cyclic_ck);
+        mHalfBgCk = (CheckBox) findViewById(R.id.half_bg_ck);
+        mResetSettingTv = (TextView) findViewById(R.id.reset_setting_tv);
+        mOneTv = (TextView) findViewById(R.id.one_tv);
+        mTwoTv = (TextView) findViewById(R.id.two_tv);
+        mThreeTv = (TextView) findViewById(R.id.three_tv);
+
+
+        setWheelType(mWheelType);
+        //提交
         customeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,16 +99,162 @@ public class CityPickerCustomeDataActivity extends AppCompatActivity {
 
         });
 
+        //重置属性
+        mResetSettingTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+            }
+        });
+
+
+        //一级联动，只显示省份，不显示市和区
+        mOneTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWheelType = CustomConfig.WheelType.PRO;
+                setWheelType(mWheelType);
+            }
+        });
+
+        //二级联动，只显示省份， 市，不显示区
+        mTwoTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWheelType = CustomConfig.WheelType.PRO_CITY;
+                setWheelType(mWheelType);
+            }
+        });
+
+        //三级联动，显示省份， 市和区
+        mThreeTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWheelType = CustomConfig.WheelType.PRO_CITY_DIS;
+                setWheelType(mWheelType);
+            }
+        });
+
+        //省份是否循环显示
+        mProCyclicCk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isProvinceCyclic = isChecked;
+            }
+        });
+
+        //市是否循环显示
+        mCityCyclicCk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isCityCyclic = isChecked;
+            }
+        });
+
+        //区是否循环显示
+        mAreaCyclicCk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isDistrictCyclic = isChecked;
+            }
+        });
+
+        //半透明背景显示
+        mHalfBgCk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isShowBg = isChecked;
+            }
+        });
+
+
+
     }
 
+    /**
+     * 重置属性
+     */
+    private void reset() {
+        visibleItems = 5;
+        isProvinceCyclic = true;
+        isCityCyclic = true;
+        isDistrictCyclic = true;
+        isShowBg = true;
+        mWheelType = CustomConfig.WheelType.PRO_CITY_DIS;
+
+        setWheelType(mWheelType);
+
+        mProCyclicCk.setChecked(true);
+        mCityCyclicCk.setChecked(true);
+        mAreaCyclicCk.setChecked(true);
+        mProVisibleCountEt.setText("" + visibleItems);
+
+        mHalfBgCk.setChecked(isShowBg);
+        mProCyclicCk.setChecked(isProvinceCyclic);
+        mAreaCyclicCk.setChecked(isDistrictCyclic);
+        mCityCyclicCk.setChecked(isCityCyclic);
+
+        setWheelType(mWheelType);
+
+    }
+
+
+
+    /**
+     * @param wheelType
+     */
+    private void setWheelType(CustomConfig.WheelType wheelType) {
+        if (wheelType == CustomConfig.WheelType.PRO) {
+            mOneTv.setBackgroundResource(R.drawable.city_wheeltype_selected);
+            mTwoTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mThreeTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mOneTv.setTextColor(Color.parseColor("#ffffff"));
+            mTwoTv.setTextColor(Color.parseColor("#333333"));
+            mThreeTv.setTextColor(Color.parseColor("#333333"));
+
+
+            pro_cyclic_ll.setVisibility(View.VISIBLE);
+            city_cyclic_ll.setVisibility(View.GONE);
+            area_cyclic_ll.setVisibility(View.GONE);
+
+        } else if (wheelType == CustomConfig.WheelType.PRO_CITY) {
+            mOneTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mTwoTv.setBackgroundResource(R.drawable.city_wheeltype_selected);
+            mThreeTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mOneTv.setTextColor(Color.parseColor("#333333"));
+            mTwoTv.setTextColor(Color.parseColor("#ffffff"));
+            mThreeTv.setTextColor(Color.parseColor("#333333"));
+
+            pro_cyclic_ll.setVisibility(View.VISIBLE);
+            city_cyclic_ll.setVisibility(View.VISIBLE);
+            area_cyclic_ll.setVisibility(View.GONE);
+
+        } else {
+            mOneTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mTwoTv.setBackgroundResource(R.drawable.city_wheeltype_normal);
+            mThreeTv.setBackgroundResource(R.drawable.city_wheeltype_selected);
+            mOneTv.setTextColor(Color.parseColor("#333333"));
+            mTwoTv.setTextColor(Color.parseColor("#333333"));
+            mThreeTv.setTextColor(Color.parseColor("#ffffff"));
+
+            pro_cyclic_ll.setVisibility(View.VISIBLE);
+            city_cyclic_ll.setVisibility(View.VISIBLE);
+            area_cyclic_ll.setVisibility(View.VISIBLE);
+        }
+    }
+
+
     private void showView() {
+
         CustomConfig cityConfig = new CustomConfig.Builder()
                 .title("选择城市")
-                .visibleItemsCount(5)
+                .visibleItemsCount(visibleItems)
                 .setCityData(mProvinceListData)
-                .provinceCyclic(false)
-                .cityCyclic(false)
-                .districtCyclic(false)
+                .provinceCyclic(isProvinceCyclic)
+                .cityCyclic(isCityCyclic)
+                .districtCyclic(isDistrictCyclic)
+                .drawShadows(isShowBg)
+                .setCityWheelType(mWheelType)
                 .build();
 
         customCityPicker.setCustomConfig(cityConfig);
@@ -103,7 +305,7 @@ public class CityPickerCustomeDataActivity extends AppCompatActivity {
 
         CustomCityData nbCity = new CustomCityData("21000", "宁波市");
         List<CustomCityData> nbDistList = new ArrayList<>();
-        nbDistList.add(new CustomCityData("21100", "海曙去"));
+        nbDistList.add(new CustomCityData("21100", "海曙区"));
         nbDistList.add(new CustomCityData("21200", "鄞州区"));
         nbCity.setList(nbDistList);
 

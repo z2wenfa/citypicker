@@ -112,6 +112,28 @@ public class CustomConfig {
      */
     private int lineHeigh = 3;
 
+    /**
+     * 默认显示的城市数据，只包含省市区名称
+     */
+    /**
+     * 定义显示省市区三种滚轮的显示状态
+     * PRO:只显示省份的一级选择器
+     * PRO_CITY:显示省份和城市二级联动的选择器
+     * PRO_CITY_DIS:显示省份和城市和县区三级联动的选择器
+     */
+    public enum WheelType {
+        PRO, PRO_CITY, PRO_CITY_DIS
+    }
+
+    /**
+     * 定义默认显示省市区三级联动的滚轮选择器
+     */
+    public CustomConfig.WheelType mWheelType = CustomConfig.WheelType.PRO_CITY_DIS;
+
+    public CustomConfig.WheelType getWheelType() {
+        return mWheelType;
+    }
+
 
     /**
      * 是否显示半透明的背景
@@ -326,6 +348,11 @@ public class CustomConfig {
         this.isDistrictCyclic = builder.isDistrictCyclic;
         this.isCityCyclic = builder.isCityCyclic;
 
+        /**
+         * 是否显示城市和地区
+         */
+        this.mWheelType = builder.mWheelType;
+
 
         /**
          * 是否显示半透明
@@ -442,7 +469,10 @@ public class CustomConfig {
          * 中间线的颜色
          */
         private String lineColor = "#C7C7C7";
-
+        /**
+         * 定义默认显示省市区三级联动的滚轮选择器
+         */
+        private CustomConfig.WheelType mWheelType = CustomConfig.WheelType.PRO_CITY_DIS;
         /**
          * 中间线的宽度
          */
@@ -451,6 +481,21 @@ public class CustomConfig {
         private List<CustomCityData> cityDataList = new ArrayList<>();
 
         public Builder() {
+        }
+
+
+        /**
+         * 显示省市区三级联动的显示状态
+         * PRO:只显示省份的一级选择器
+         * PRO_CITY:显示省份和城市二级联动的选择器
+         * PRO_CITY_DIS:显示省份和城市和县区三级联动的选择器
+         *
+         * @param wheelType
+         * @return
+         */
+        public CustomConfig.Builder setCityWheelType(CustomConfig.WheelType wheelType) {
+            this.mWheelType = wheelType;
+            return this;
         }
 
 

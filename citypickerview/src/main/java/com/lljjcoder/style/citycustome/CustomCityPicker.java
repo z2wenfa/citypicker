@@ -56,6 +56,8 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
 
     private OnCustomCityPickerItemClickListener listener = null;
 
+    private CustomConfig.WheelType type = CustomConfig.WheelType.PRO_CITY_DIS;
+
     public void setOnCustomCityPickerItemClickListener(OnCustomCityPickerItemClickListener listener) {
         this.listener = listener;
     }
@@ -103,6 +105,11 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
                 }
             }
         });
+
+        //设置显示层级
+        type = config.getWheelType();
+        setWheelShowLevel(type);
+
 
         /**
          * 设置标题背景颜色
@@ -191,19 +198,35 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
             @Override
             public void onClick(View v) {
 
-                int pCurrent = mViewProvince.getCurrentItem();
-                int cCurrent = mViewCity.getCurrentItem();
-                int dCurrent = mViewDistrict.getCurrentItem();
+                if (type == CustomConfig.WheelType.PRO) {
+                    int pCurrent = mViewProvince.getCurrentItem();
+                    List<CustomCityData> provinceList = config.getCityDataList();
+                    CustomCityData province = provinceList.get(pCurrent);
+                    listener.onSelected(province, new CustomCityData(), new CustomCityData());
+                } else if (type == CustomConfig.WheelType.PRO_CITY) {
+                    int pCurrent = mViewProvince.getCurrentItem();
+                    List<CustomCityData> provinceList = config.getCityDataList();
+                    CustomCityData province = provinceList.get(pCurrent);
+                    int cCurrent = mViewCity.getCurrentItem();
+                    List<CustomCityData> cityDataList = province.getList();
+                    if (cityDataList == null) return;
+                    CustomCityData city = cityDataList.get(cCurrent);
+                    listener.onSelected(province, city, new CustomCityData());
+                } else if (type == CustomConfig.WheelType.PRO_CITY_DIS) {
+                    int pCurrent = mViewProvince.getCurrentItem();
+                    List<CustomCityData> provinceList = config.getCityDataList();
+                    CustomCityData province = provinceList.get(pCurrent);
+                    int cCurrent = mViewCity.getCurrentItem();
+                    List<CustomCityData> cityDataList = province.getList();
+                    if (cityDataList == null) return;
+                    CustomCityData city = cityDataList.get(cCurrent);
+                    int dCurrent = mViewDistrict.getCurrentItem();
+                    List<CustomCityData> areaList = city.getList();
+                    if (areaList == null) return;
+                    CustomCityData area = areaList.get(dCurrent);
+                    listener.onSelected(province, city, area);
+                }
 
-                List<CustomCityData> provinceList = config.getCityDataList();
-                CustomCityData province = provinceList.get(pCurrent);
-                List<CustomCityData> cityDataList = province.getList();
-                if (cityDataList == null) return;
-                CustomCityData city = cityDataList.get(cCurrent);
-                List<CustomCityData> areaList = city.getList();
-                if (areaList == null) return;
-                CustomCityData area = areaList.get(dCurrent);
-                listener.onSelected(province, city, area);
                 hide();
             }
         });
@@ -218,6 +241,28 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         //显示省市区数据
         setUpData();
 
+
+    }
+
+    /**
+     * 显示省市区登记
+     *
+     * @param type
+     */
+    private void setWheelShowLevel(CustomConfig.WheelType type) {
+        if (type == CustomConfig.WheelType.PRO) {
+            mViewProvince.setVisibility(View.VISIBLE);
+            mViewCity.setVisibility(View.GONE);
+            mViewDistrict.setVisibility(View.GONE);
+        } else if (type == CustomConfig.WheelType.PRO_CITY) {
+            mViewProvince.setVisibility(View.VISIBLE);
+            mViewCity.setVisibility(View.VISIBLE);
+            mViewDistrict.setVisibility(View.GONE);
+        } else {
+            mViewProvince.setVisibility(View.VISIBLE);
+            mViewCity.setVisibility(View.VISIBLE);
+            mViewDistrict.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -252,10 +297,10 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         mViewDistrict.setLineColorStr(config.getLineColor());
         mViewDistrict.setLineWidth(config.getLineHeigh());
 
-        updateCities();
 
-        updateAreas();
-
+        if (type == CustomConfig.WheelType.PRO_CITY || type == CustomConfig.WheelType.PRO_CITY_DIS) {
+            updateCities();
+        }
 
     }
 
@@ -276,7 +321,10 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         cityWheel.setItemResource(R.layout.default_item_city);
         cityWheel.setItemTextResource(R.id.default_item_city_name_tv);
         mViewCity.setViewAdapter(cityWheel);
-        updateAreas();
+
+        if (type == CustomConfig.WheelType.PRO_CITY_DIS) {
+            updateAreas();
+        }
     }
 
     /**
