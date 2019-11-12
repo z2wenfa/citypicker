@@ -79,7 +79,7 @@
 #### **gradle引用**
 
 ```
-compile 'liji.library.dev:citypickerview:5.0.0'
+compile 'liji.library.dev:citypickerview:5.1.0'
 ```
 
 #### **代码混淆**
@@ -88,10 +88,9 @@ compile 'liji.library.dev:citypickerview:5.0.0'
 
 ### **更新说明**
 #### 最新版本
-**V5.0.0版本更新内容（2019.10.29）**
-1. 发布5.0.0版本,新增自定义数据源功能。
-2. 数据结构调整
-3. 部分功能代码重构
+
+**V5.1.0版本更新内容（2019.11.12）**
+1. 发布5.1.0版本,新增自定义数据源样式的设置滚轮层数属性。
 
 #### 历史更新记录
 
