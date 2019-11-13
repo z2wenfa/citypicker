@@ -7,13 +7,6 @@
   <a href="javascript:;" rel="noopener" target="_blank"><img width="70%" src="https://img-blog.csdnimg.cn/20191029200026597.png" alt="citypicker logo"></a></p>
 </p>
 
-### 码农的小世界
-欢迎关注本人公众号，学习更多知识，每天定时更新干货。
-
-<p align="center">
-  <a href="javascript:;" rel="noopener" target="_blank"><img width="70%" src="https://img-blog.csdnimg.cn/20191029194659502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTg4MjY2,size_16,color_FFFFFF,t_70" alt="citypicker logo"></a></p>
-</p>
-
 
 
 ### **CityPicker 城市选择器**
@@ -27,6 +20,24 @@
  2. 支持多种自定义属性来满足你的需求
  3. 简单的几行代码即可实现城市选择器功能
  4. 支持使用自己的数据来实现城市选择器
+
+#### **gradle引用**
+
+```
+compile 'liji.library.dev:citypickerview:5.1.0'
+```
+
+### **更新说明**
+#### 最新版本
+
+**V5.1.0版本更新内容（2019.11.12）**
+1. 发布5.1.0版本,新增自定义数据源样式的设置滚轮层数属性。
+
+#### 历史更新记录
+
+ [历史更新说明](https://github.com/crazyandcoder/citypicker/wiki/%E5%8E%86%E5%8F%B2%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
+
+
 
 ### **数据来源**
 
@@ -76,25 +87,12 @@
 [样式四链接-三级城市列表使用方法](https://github.com/crazyandcoder/citypicker/wiki/%E6%A0%B7%E5%BC%8F%E4%B8%89%EF%BC%88%E7%9C%81%E5%B8%82%E5%8C%BA%E4%B8%89%E7%BA%A7%E5%88%97%E8%A1%A8%EF%BC%89)
 
 
-#### **gradle引用**
 
-```
-compile 'liji.library.dev:citypickerview:5.1.0'
-```
 
 #### **代码混淆**
 
 [代码混淆解决方案](https://github.com/crazyandcoder/citypicker/wiki/%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86)
 
-### **更新说明**
-#### 最新版本
-
-**V5.1.0版本更新内容（2019.11.12）**
-1. 发布5.1.0版本,新增自定义数据源样式的设置滚轮层数属性。
-
-#### 历史更新记录
-
- [历史更新说明](https://github.com/crazyandcoder/citypicker/wiki/%E5%8E%86%E5%8F%B2%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
 
 ### **专属QQ群，欢迎加入！**
@@ -116,6 +114,14 @@ https://github.com/crazyandcoder/citypicker/wiki
  
  
 **赞赏的伙计，请注明你们的昵称，请留下你们的联系方式(最好是GitHub地址)，谢谢合作 ^_^ 。**
+
+
+### 码农的小世界
+欢迎关注本人公众号，学习更多知识，每天定时更新干货。
+
+<p align="center">
+  <a href="javascript:;" rel="noopener" target="_blank"><img width="70%" src="https://img-blog.csdnimg.cn/20191029194659502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTg4MjY2,size_16,color_FFFFFF,t_70" alt="citypicker logo"></a></p>
+</p>
  
  
 
