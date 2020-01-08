@@ -104,18 +104,6 @@ QQ群：417846442
 
 https://github.com/crazyandcoder/citypicker/wiki
 
-### **赞赏**
-
-如果你喜欢 citypicker 这个开源库，感觉 citypicker 帮助到了你，可以点右上角 "Star" 支持一下 谢谢！,你也还可以扫描下面的二维码~ 请作者喝一杯牛奶，让作者更有动力写出更好的开源库服务大家。^_^ 
-
-
- ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTgwMTAyMTE1ODE5NDkw?x-oss-process=image/format,png)              ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTgwMTAyMTE1ODM0NjI4?x-oss-process=image/format,png)
- 
- 
- 
-**赞赏的伙计，请注明你们的昵称，请留下你们的联系方式(最好是GitHub地址)，谢谢合作 ^_^ 。**
-
-
 ### 码农的小世界
 欢迎关注本人公众号，学习更多知识，每天定时更新干货。
 
