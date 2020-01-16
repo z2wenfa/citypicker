@@ -77,7 +77,7 @@ public class ProvinceAdapter extends BaseAdapter {
         ProvinceBean item = getItem(position);
         holder.name.setText(item.getName());
 
-        boolean checked = provinceIndex != INDEX_INVALID && mProList.get(provinceIndex).getId().equals(item.getId());
+        boolean checked = provinceIndex != INDEX_INVALID && mProList.get(provinceIndex).getName().equals(item.getName());
         holder.name.setEnabled(!checked);
         holder.selectImg.setVisibility(checked ? View.VISIBLE : View.GONE);
 

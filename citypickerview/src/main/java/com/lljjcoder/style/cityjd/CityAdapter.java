@@ -77,7 +77,7 @@ public class CityAdapter extends BaseAdapter {
         CityBean item = getItem(position);
         holder.name.setText(item.getName());
 
-        boolean checked = cityIndex != INDEX_INVALID && mCityList.get(cityIndex).getId().equals(item.getId());
+        boolean checked = cityIndex != INDEX_INVALID && mCityList.get(cityIndex).getName().equals(item.getName());
         holder.name.setEnabled(!checked);
         holder.selectImg.setVisibility(checked ? View.VISIBLE : View.GONE);
 

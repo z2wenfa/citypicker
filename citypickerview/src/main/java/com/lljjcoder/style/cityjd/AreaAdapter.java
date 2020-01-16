@@ -78,7 +78,7 @@ public class AreaAdapter extends BaseAdapter {
         DistrictBean item = getItem(position);
         holder.name.setText(item.getName());
 
-        boolean checked = districtIndex != INDEX_INVALID && mDistrictList.get(districtIndex).getId().equals(item.getId());
+        boolean checked = districtIndex != INDEX_INVALID && mDistrictList.get(districtIndex).getName().equals(item.getName());
         holder.name.setEnabled(!checked);
         holder.selectImg.setVisibility(checked ? View.VISIBLE : View.GONE);
 
