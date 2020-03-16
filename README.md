@@ -24,7 +24,7 @@
 #### **gradle引用**
 
 ```
-compile 'liji.library.dev:citypickerview:5.2.1'
+implementation 'liji.library.dev:citypickerview:5.2.1'
 ```
 
 ### **更新说明**
