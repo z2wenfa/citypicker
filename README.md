@@ -24,14 +24,14 @@
 #### **gradle引用**
 
 ```
-implementation 'liji.library.dev:citypickerview:5.2.1'
+implementation 'liji.library.dev:citypickerview:5.2.2'
 ```
 
 ### **更新说明**
 #### 最新版本
 
-**V5.2.1版本更新内容（2020.02.24）**
-1. 发布5.2.1版本,更新山东省济南市下面的区数据信息。
+**V5.2.2版本更新内容（2020.03.31）**
+  1. 发布5.2.2版本,修复设置默认城市后获取不到某些地区的数据问题。
 
 #### 历史更新记录
 
