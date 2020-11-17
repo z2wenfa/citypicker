@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/item_city_name_tv"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="90dp"
         android:background="@drawable/city_bg_l"
         android:gravity="center"
         android:text="hello"
