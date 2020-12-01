@@ -24,14 +24,16 @@
 #### **gradle引用**
 
 ```
-implementation 'liji.library.dev:citypickerview:5.2.2'
+implementation 'liji.library.dev:citypickerview:5.2.4'
 ```
 
 ### **更新说明**
 #### 最新版本
 
-**V5.2.2版本更新内容（2020.03.31）**
-  1. 发布5.2.2版本,修复设置默认城市后获取不到某些地区的数据问题。
+**V5.2.4版本更新内容（2020.12.01）**
+  1. 发布5.2.4版本,增加自定义数据源样式的自定义item属性
+  2. 修复bug
+
 
 #### 历史更新记录
 
