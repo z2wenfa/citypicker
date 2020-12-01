@@ -245,7 +245,7 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
     }
 
     /**
-     * 显示省市区登记
+     * 显示省市区等级
      *
      * @param type
      */
@@ -271,8 +271,14 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         List<CustomCityData> proArra = config.getCityDataList();
         if (proArra == null) return;
         ArrayWheelAdapter arrayWheelAdapter = new ArrayWheelAdapter<CustomCityData>(mContext, proArra);
-        arrayWheelAdapter.setItemResource(R.layout.default_item_city);
-        arrayWheelAdapter.setItemTextResource(R.id.default_item_city_name_tv);
+        //自定义item
+        if (config.getCustomItemLayout() != CityConfig.NONE && config.getCustomItemTextViewId() != CityConfig.NONE) {
+            arrayWheelAdapter.setItemResource(config.getCustomItemLayout());
+            arrayWheelAdapter.setItemTextResource(config.getCustomItemTextViewId());
+        } else {
+            arrayWheelAdapter.setItemResource(R.layout.default_item_city);
+            arrayWheelAdapter.setItemTextResource(R.id.default_item_city_name_tv);
+        }
         mViewProvince.setViewAdapter(arrayWheelAdapter);
 
 
@@ -318,8 +324,14 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         List<CustomCityData> pCityList = mProvinceBean.getList();
         if (pCityList == null) return;
         ArrayWheelAdapter cityWheel = new ArrayWheelAdapter<CustomCityData>(mContext, pCityList);
-        cityWheel.setItemResource(R.layout.default_item_city);
-        cityWheel.setItemTextResource(R.id.default_item_city_name_tv);
+        //自定义item
+        if (config.getCustomItemLayout() != CityConfig.NONE && config.getCustomItemTextViewId() != CityConfig.NONE) {
+            cityWheel.setItemResource(config.getCustomItemLayout());
+            cityWheel.setItemTextResource(config.getCustomItemTextViewId());
+        } else {
+            cityWheel.setItemResource(R.layout.default_item_city);
+            cityWheel.setItemTextResource(R.id.default_item_city_name_tv);
+        }
         mViewCity.setViewAdapter(cityWheel);
 
         if (type == CustomConfig.WheelType.PRO_CITY_DIS) {
@@ -343,8 +355,15 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         List<CustomCityData> areaList = city.getList();
         if (areaList == null) return;
         ArrayWheelAdapter districtWheel = new ArrayWheelAdapter<CustomCityData>(mContext, areaList);
-        districtWheel.setItemResource(R.layout.default_item_city);
-        districtWheel.setItemTextResource(R.id.default_item_city_name_tv);
+        //自定义item
+        if (config.getCustomItemLayout() != CityConfig.NONE
+                && config.getCustomItemTextViewId() != CityConfig.NONE) {
+            districtWheel.setItemResource(config.getCustomItemLayout());
+            districtWheel.setItemTextResource(config.getCustomItemTextViewId());
+        } else {
+            districtWheel.setItemResource(R.layout.default_item_city);
+            districtWheel.setItemTextResource(R.id.default_item_city_name_tv);
+        }
         mViewDistrict.setViewAdapter(districtWheel);
         mViewDistrict.setCurrentItem(0);
     }

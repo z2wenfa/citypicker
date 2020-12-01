@@ -252,6 +252,8 @@ public class CityPickerCustomeDataActivity extends AppCompatActivity {
                 .setCityData(mProvinceListData)
                 .provinceCyclic(isProvinceCyclic)
                 .cityCyclic(isCityCyclic)
+                .setCustomItemLayout(R.layout.item_custome_city)//自定义item的布局
+                .setCustomItemTextViewId(R.id.item_custome_city_name_tv)
                 .districtCyclic(isDistrictCyclic)
                 .drawShadows(isShowBg)
                 .setCityWheelType(mWheelType)
