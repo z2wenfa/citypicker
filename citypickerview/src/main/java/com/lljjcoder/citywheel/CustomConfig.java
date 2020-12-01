@@ -86,15 +86,15 @@ public class CustomConfig {
     private int titleTextSize = 18;
 
 
-//    /**
-//     * 自定义的item布局
-//     */
-//    private Integer customItemLayout;
-//
-//    /**
-//     * 自定义的item txt id
-//     */
-//    private Integer customItemTextViewId;
+    /**
+     * 自定义的item布局
+     */
+    private Integer customItemLayout;
+
+    /**
+     * 自定义的item txt id
+     */
+    private Integer customItemTextViewId;
 
     /**
      * 是否显示滚轮上面的模糊阴影效果
@@ -282,22 +282,22 @@ public class CustomConfig {
         this.titleTextSize = titleTextSize;
     }
 
-//
-//    public Integer getCustomItemLayout() {
-//        return customItemLayout == null ? NONE : customItemLayout;
-//    }
-//
-//    public void setCustomItemLayout(int customItemLayout) {
-//        this.customItemLayout = customItemLayout;
-//    }
-//
-//    public Integer getCustomItemTextViewId() {
-//        return customItemTextViewId == null ? NONE : customItemTextViewId;
-//    }
-//
-//    public void setCustomItemTextViewId(Integer customItemTextViewId) {
-//        this.customItemTextViewId = customItemTextViewId;
-//    }
+    //
+    public Integer getCustomItemLayout() {
+        return customItemLayout == null ? NONE : customItemLayout;
+    }
+
+    public void setCustomItemLayout(int customItemLayout) {
+        this.customItemLayout = customItemLayout;
+    }
+
+    public Integer getCustomItemTextViewId() {
+        return customItemTextViewId == null ? NONE : customItemTextViewId;
+    }
+
+    public void setCustomItemTextViewId(Integer customItemTextViewId) {
+        this.customItemTextViewId = customItemTextViewId;
+    }
 
     public List<CustomCityData> getCityDataList() {
         return cityDataList;
@@ -359,11 +359,11 @@ public class CustomConfig {
          */
         this.isShowBackground = builder.isShowBackground;
 //
-//        /**
-//         * 自定义item的布局，必须制定Layout和id
-//         */
-//        this.customItemLayout = builder.customItemLayout;
-//        this.customItemTextViewId = builder.customItemTextViewId;
+        /**
+         * 自定义item的布局，必须制定Layout和id
+         */
+        this.customItemLayout = builder.customItemLayout;
+        this.customItemTextViewId = builder.customItemTextViewId;
 
         /**
          * 是否显示滚轮上面的模糊阴影效果
@@ -450,15 +450,15 @@ public class CustomConfig {
          */
         private boolean isShowBackground = true;
 
-//        /**
-//         * 自定义的item布局
-//         */
-//        private Integer customItemLayout;
-//
-//        /**
-//         * 自定义的item txt id
-//         */
-//        private Integer customItemTextViewId;
+        /**
+         * 自定义的item布局
+         */
+        private Integer customItemLayout;
+
+        /**
+         * 自定义的item txt id
+         */
+        private Integer customItemTextViewId;
 
         /**
          * 是否显示滚轮上面的模糊阴影效果
@@ -702,27 +702,28 @@ public class CustomConfig {
             return this;
         }
 //
-//        /**
-//         * 自定义item布局
-//         *
-//         * @param itemLayout
-//         * @return
-//         */
-//        public Builder setCustomItemLayout(Integer itemLayout) {
-//            this.customItemLayout = itemLayout;
-//            return this;
-//        }
-//
-//        /**
-//         * 自定义item布局中的id
-//         *
-//         * @param setCustomItemTextViewId
-//         * @return
-//         */
-//        public Builder setCustomItemTextViewId(Integer setCustomItemTextViewId) {
-//            this.customItemTextViewId = setCustomItemTextViewId;
-//            return this;
-//        }
+
+        /**
+         * 自定义item布局
+         *
+         * @param itemLayout
+         * @return
+         */
+        public Builder setCustomItemLayout(Integer itemLayout) {
+            this.customItemLayout = itemLayout;
+            return this;
+        }
+
+        /**
+         * 自定义item布局中的id
+         *
+         * @param setCustomItemTextViewId
+         * @return
+         */
+        public Builder setCustomItemTextViewId(Integer setCustomItemTextViewId) {
+            this.customItemTextViewId = setCustomItemTextViewId;
+            return this;
+        }
 
         public CustomConfig build() {
             CustomConfig config = new CustomConfig(this);

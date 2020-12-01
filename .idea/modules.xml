@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="citypicker/app" />
       <module fileurl="file://$PROJECT_DIR$/citypicker.iml" filepath="$PROJECT_DIR$/citypicker.iml" group="citypicker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/citypicker-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/citypicker-app.iml" group="citypicker/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_citydata/citypicker-lib_citydata.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_citydata/citypicker-lib_citydata.iml" group="citypicker/lib_citydata" />
       <module fileurl="file://$PROJECT_DIR$/citypickerview/citypickerview.iml" filepath="$PROJECT_DIR$/citypickerview/citypickerview.iml" group="citypicker/citypickerview" />
       <module fileurl="file://$PROJECT_DIR$/lib_citydata/lib_citydata.iml" filepath="$PROJECT_DIR$/lib_citydata/lib_citydata.iml" group="citypicker/lib_citydata" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/citypickerview/liji.library.dev-citypickerview.iml" filepath="$PROJECT_DIR$/.idea/modules/citypickerview/liji.library.dev-citypickerview.iml" group="citypicker/citypickerview" />
     </modules>
   </component>
 </project>

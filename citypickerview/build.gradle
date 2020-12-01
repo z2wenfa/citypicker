@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 //你的library版本号
-version = "5.2.2"
+version = "5.2.4"
 
 
 android {
@@ -18,8 +18,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 5
-        versionName "5.2.2"
+        versionCode 6
+        versionName "5.2.4"
     }
     buildTypes {
         release {
@@ -60,7 +60,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile files('libs/pinyin4j-2.5.0.jar')
+    compile 'com.github.open-android:pinyin4j:2.5.0'
 }
 
 //你的library的地址
