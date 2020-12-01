@@ -251,6 +251,9 @@ public class CityPickerCustomeDataActivity extends AppCompatActivity {
                 .visibleItemsCount(visibleItems)
                 .setCityData(mProvinceListData)
                 .provinceCyclic(isProvinceCyclic)
+                .province("浙江省")
+                .city("宁波市")
+                .district("鄞州区")
                 .cityCyclic(isCityCyclic)
                 .setCustomItemLayout(R.layout.item_custome_city)//自定义item的布局
                 .setCustomItemTextViewId(R.id.item_custome_city_name_tv)

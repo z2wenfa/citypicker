@@ -270,6 +270,18 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
 
         List<CustomCityData> proArra = config.getCityDataList();
         if (proArra == null) return;
+
+        int provinceDefault = -1;
+        if (!TextUtils.isEmpty(config.getDefaultProvinceName()) && proArra.size() > 0) {
+            for (int i = 0; i < proArra.size(); i++) {
+                if (proArra.get(i).getName().startsWith(config.getDefaultProvinceName())) {
+                    provinceDefault = i;
+                    break;
+                }
+            }
+        }
+
+
         ArrayWheelAdapter arrayWheelAdapter = new ArrayWheelAdapter<CustomCityData>(mContext, proArra);
         //自定义item
         if (config.getCustomItemLayout() != CityConfig.NONE && config.getCustomItemTextViewId() != CityConfig.NONE) {
@@ -280,6 +292,11 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
             arrayWheelAdapter.setItemTextResource(R.id.default_item_city_name_tv);
         }
         mViewProvince.setViewAdapter(arrayWheelAdapter);
+
+        //获取所设置的省的位置，直接定位到该位置
+        if (-1 != provinceDefault) {
+            mViewProvince.setCurrentItem(provinceDefault);
+        }
 
 
         // 设置可见条目数量
@@ -323,6 +340,20 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
 
         List<CustomCityData> pCityList = mProvinceBean.getList();
         if (pCityList == null) return;
+
+
+        //设置最初的默认城市
+        int cityDefault = -1;
+        if (!TextUtils.isEmpty(config.getDefaultCityName()) && pCityList.size() > 0) {
+            for (int i = 0; i < pCityList.size(); i++) {
+                if (pCityList.get(i).getName().startsWith(config.getDefaultCityName())) {
+                    cityDefault = i;
+                    break;
+                }
+            }
+        }
+
+
         ArrayWheelAdapter cityWheel = new ArrayWheelAdapter<CustomCityData>(mContext, pCityList);
         //自定义item
         if (config.getCustomItemLayout() != CityConfig.NONE && config.getCustomItemTextViewId() != CityConfig.NONE) {
@@ -332,6 +363,15 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
             cityWheel.setItemResource(R.layout.default_item_city);
             cityWheel.setItemTextResource(R.id.default_item_city_name_tv);
         }
+
+        mViewCity.setViewAdapter(cityWheel);
+        if (-1 != cityDefault) {
+            mViewCity.setCurrentItem(cityDefault);
+        } else {
+            mViewCity.setCurrentItem(0);
+        }
+
+
         mViewCity.setViewAdapter(cityWheel);
 
         if (type == CustomConfig.WheelType.PRO_CITY_DIS) {
@@ -354,6 +394,18 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
         CustomCityData city = cityDataList.get(cCurrent);
         List<CustomCityData> areaList = city.getList();
         if (areaList == null) return;
+
+
+        int districtDefault = -1;
+        if (!TextUtils.isEmpty(config.getDefaultDistrict()) && areaList.size() > 0) {
+            for (int i = 0; i < areaList.size(); i++) {
+                if (areaList.get(i).getName().startsWith(config.getDefaultDistrict())) {
+                    districtDefault = i;
+                    break;
+                }
+            }
+        }
+
         ArrayWheelAdapter districtWheel = new ArrayWheelAdapter<CustomCityData>(mContext, areaList);
         //自定义item
         if (config.getCustomItemLayout() != CityConfig.NONE
@@ -364,8 +416,18 @@ public class CustomCityPicker implements CanShow, OnWheelChangedListener {
             districtWheel.setItemResource(R.layout.default_item_city);
             districtWheel.setItemTextResource(R.id.default_item_city_name_tv);
         }
+
+        //设置默认城市
+        if (-1 != districtDefault) {
+            mViewDistrict.setCurrentItem(districtDefault);
+        } else {
+            mViewDistrict.setCurrentItem(0);
+        }
+
+
         mViewDistrict.setViewAdapter(districtWheel);
-        mViewDistrict.setCurrentItem(0);
+
+
     }
 
 

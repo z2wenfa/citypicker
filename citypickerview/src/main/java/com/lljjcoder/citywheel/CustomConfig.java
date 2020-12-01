@@ -103,6 +103,22 @@ public class CustomConfig {
 
 
     /**
+     * 第一次默认的显示省份，一般配合定位，使用
+     */
+    private String defaultProvinceName = "";
+
+    /**
+     * 第一次默认得显示城市，一般配合定位，使用
+     */
+    private String defaultCityName = "";
+
+    /**
+     * 第一次默认得显示，一般配合定位，使用
+     */
+    private String defaultDistrict = "";
+
+
+    /**
      * 中间线的颜色
      */
     private String lineColor = "#C7C7C7";
@@ -202,6 +218,29 @@ public class CustomConfig {
         isDistrictCyclic = districtCyclic;
     }
 
+    public String getDefaultProvinceName() {
+        return defaultProvinceName == null ? "" : defaultProvinceName;
+    }
+
+    public void setDefaultProvinceName(String defaultProvinceName) {
+        this.defaultProvinceName = defaultProvinceName;
+    }
+
+    public String getDefaultCityName() {
+        return defaultCityName == null ? "" : defaultCityName;
+    }
+
+    public void setDefaultCityName(String defaultCityName) {
+        this.defaultCityName = defaultCityName;
+    }
+
+    public String getDefaultDistrict() {
+        return defaultDistrict == null ? "" : defaultDistrict;
+    }
+
+    public void setDefaultDistrict(String defaultDistrict) {
+        this.defaultDistrict = defaultDistrict;
+    }
     public String getCancelTextColorStr() {
         return cancelTextColorStr == null ? "" : cancelTextColorStr;
     }
@@ -347,6 +386,13 @@ public class CustomConfig {
         this.isProvinceCyclic = builder.isProvinceCyclic;
         this.isDistrictCyclic = builder.isDistrictCyclic;
         this.isCityCyclic = builder.isCityCyclic;
+        /**
+         * 默认的省市区地址
+         */
+        this.defaultDistrict = builder.defaultDistrict;
+        this.defaultCityName = builder.defaultCityName;
+        this.defaultProvinceName = builder.defaultProvinceName;
+
 
         /**
          * 是否显示城市和地区
@@ -480,6 +526,21 @@ public class CustomConfig {
 
         private List<CustomCityData> cityDataList = new ArrayList<>();
 
+        /**
+         * 第一次默认的显示省份，一般配合定位，使用
+         */
+        private String defaultProvinceName = "";
+
+        /**
+         * 第一次默认得显示城市，一般配合定位，使用
+         */
+        private String defaultCityName = "";
+
+        /**
+         * 第一次默认得显示，一般配合定位，使用
+         */
+        private String defaultDistrict = "";
+
         public Builder() {
         }
 
@@ -501,6 +562,39 @@ public class CustomConfig {
 
         public Builder setCityData(List<CustomCityData> data) {
             this.cityDataList = data;
+            return this;
+        }
+
+        /**
+         * 第一次默认的显示省份，一般配合定位，使用
+         *
+         * @param defaultProvinceName
+         * @return
+         */
+        public Builder province(String defaultProvinceName) {
+            this.defaultProvinceName = defaultProvinceName;
+            return this;
+        }
+
+        /**
+         * 第一次默认得显示城市，一般配合定位，使用
+         *
+         * @param defaultCityName
+         * @return
+         */
+        public Builder city(String defaultCityName) {
+            this.defaultCityName = defaultCityName;
+            return this;
+        }
+
+        /**
+         * 第一次默认地区显示，一般配合定位，使用
+         *
+         * @param defaultDistrict
+         * @return
+         */
+        public Builder district(String defaultDistrict) {
+            this.defaultDistrict = defaultDistrict;
             return this;
         }
 
