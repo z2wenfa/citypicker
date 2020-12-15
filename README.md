@@ -106,7 +106,7 @@ QQ群：417846442
 
 https://github.com/crazyandcoder/citypicker/wiki
 
-### ***License**
+### **License**
 ```
 Copyright 2016 crazyandcoder
 
